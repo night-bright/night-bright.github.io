@@ -125,31 +125,63 @@
       background-attachment:fixed;
       background-position:center;
     }
-    /*顶栏图片*/
-    .header {
-      background:url(87,250,255,1) none repeat scroll !important;
+    .headband {
+      background:rgba(255,51,153,0.8);
+    }
+    .github-corner svg {
+      color: #fff;
+      fill: rgba(255,51,153,0.8);
     }
     /*底栏背景色*/
     .footer {
+      color: #fff;
       /*background:rgba(87,250,255,1) none repeat scroll !important;*/
     }
     /*侧栏图片及内部文字颜色修改*/
-    #sidebar {
+    .sidebar {
       /*background:url(图片链接);*/
-      background:rgba(87,250,255,1) none repeat scroll !important;
+      background:rgba(255,255,255,0.8) none repeat scroll !important;
       background-size: cover;
       background-position:center;
       background-repeat:no-repeat;
-      p,span,a {color: 颜色代码;}
     }
+    /*.sidebar p,span,a {color: #555;}*/
+
     #posts .post-block{
-      background:rgba(87,250,255,0.7) none repeat scroll !important;
+      background:rgba(255,255,255,0.8) none repeat scroll !important;
     }
     .site-meta {
-      background: rgba(87,250,255,0.7);
-      color: #fff;
-      padding: 20px 0;
+      background: rgba(255,255,255,0.8);
+      color: #555;
     }
+    .site-subtitle {
+      color: #555;
+    }
+    .brand {
+      /*background: #222;*/
+      color: #555;
+    }
+    .brand:hover{
+      color: #FF3399;
+    }
+
+    .post-body p a{
+      color: #0593d3;
+      border-bottom: none;
+      border-bottom: 1px solid #0593d3;
+      &:hover {
+        color: #FF3399;
+        border-bottom: none;
+        border-bottom: 1px solid #FF3399;
+      }
+    }
+    .post-title-link:hover{
+      color: #FF3399;
+    }
+    .posts-expand .post-title-link::before {
+      background-color: #FF3399;
+    }
+
   </style>
 </head>
 
