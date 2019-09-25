@@ -135,24 +135,33 @@
     }
     /*底栏背景色*/
     .footer {
-      color: #fff;
+      color: #FF3399;
       /*background:rgba(87,250,255,1) none repeat scroll !important;*/
+    }
+    .footer .with-love{
+      color: #FF3399;
     }
     /*侧栏图片及内部文字颜色修改*/
     .sidebar {
       /*background:url(图片链接);*/
-      background:rgba(255,255,255,0.8) none repeat scroll !important;
+      background:rgba(255,255,255,0) none repeat scroll !important;
       background-size: cover;
       background-position:center;
       background-repeat:no-repeat;
     }
-    /*.sidebar p,span,a {color: #555;}*/
-
-    #posts .post-block{
+    .sidebar-inner{
       background:rgba(255,255,255,0.8) none repeat scroll !important;
     }
-    .site-meta {
+    /*.sidebar p,span,a {color: #555;}*/
+
+    .post-block{
+      background:rgba(255,255,255,0.8) none repeat scroll !important;
+    }
+    .header-inner {
       background: rgba(255,255,255,0.8);
+    }
+    .site-meta {
+      background: rgba(255,255,255,0);
       color: #555;
     }
     .site-subtitle {
@@ -182,32 +191,38 @@
     .posts-expand .post-title-link::before {
       background-color: #FF3399;
     }
+    /*导航栏按钮*/
+    .btn-bar {
+      background-color: #FF3399;
+    }
+
+
 
     /*播放器*/
     #player{
       width: 300px;height: 450px;background: rgba(255,255,255,0);
       position: fixed;
       z-index: 100;
-      left: -270px;
-      bottom: 10px;
+      left: -280px;
+      bottom: 0px;
     }
-    #player:hover{
-      animation:moveright 0.5s 1 linear ;
-      -webkit-animation:moveright 0.5s 1 linear ; /*Safari and Chrome*/
+    .moveright{
+      animation:moveright 0.3s 1 linear ;
+      -webkit-animation:moveright 0.3s 1 linear ; /*Safari and Chrome*/
       animation-fill-mode:forwards;
       -webkit-animation-fill-mode:forwards; /* Safari 和 Chrome */
     }
 
     @keyframes moveright
     {
-    from {left:-270px;}
-    to {left:1px;}
+    from {left:-280px;}
+    to {left:-10px;}
     }
 
     @-webkit-keyframes moveright /*Safari and Chrome*/
     {
-    from {left:-270px;}
-    to {left:1px;}
+    from {left:-280px;}
+    to {left:-10px;}
     }
     /* 小屏幕 */
     @media (max-width: 750px) {
@@ -702,8 +717,8 @@
   
 
   <div id="snowflake"></div>
-  <div id="player">
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2998393083&auto=0&height=430"></iframe>
+  <div id="player" onmouseenter="_onmouseenter(this)" onmouseleave="_onmouseleave(this)">
+    <iframe id="playerIframe" frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2998393083&auto=1&height=430"></iframe>
   </div>
 </body>
 <!-- 页面点击小红心 -->
@@ -714,4 +729,14 @@
 <script src="/js/myjs/sakura/js/jquery.transit.js"></script>
 <script src="/js/myjs/sakura/js/jquery.transit.js"></script>
 <script src="/js/myjs/sakura/js/sakura.js"></script>
+<script type="text/javascript">
+  function _onmouseenter(t) {
+    $(t).addClass('moveright');
+  }
+  function _onmouseleave(t) {
+    $(t).removeClass('moveright');
+  }
+  // $("#playerIframe").contents().find("#list").removeClass('list');
+  // $("#playerIframe").contents().find("#list").addClass('list z-close');
+</script>
 </html>
