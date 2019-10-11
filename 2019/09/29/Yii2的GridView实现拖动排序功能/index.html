@@ -56,32 +56,33 @@
   };
 </script>
 
-  <meta name="description" content="night-bright的个人博客">
-<meta name="keywords" content="博客,php,html,js,css">
-<meta property="og:type" content="website">
-<meta property="og:title" content="night-bright">
-<meta property="og:url" content="http://night-bright.com/index.html">
+  <meta name="description" content="本功能同样适用于其他的框架或者原生的程序（需要根据实际情况做修改）1.本功能参考地址:https://www.cnblogs.com/xiuber/p/5945597.html2.本功能必须先引入jquery和jquery-ui（注意引入先后顺序） 前端代码:1234567891011121314151617181920212223242526272829303132333435363738394">
+<meta name="keywords" content="PHP,Yii2,拖动排序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Yii2的GridView实现拖动排序功能">
+<meta property="og:url" content="http://night-bright.com/2019/09/29/Yii2的GridView实现拖动排序功能/index.html">
 <meta property="og:site_name" content="night-bright">
-<meta property="og:description" content="night-bright的个人博客">
+<meta property="og:description" content="本功能同样适用于其他的框架或者原生的程序（需要根据实际情况做修改）1.本功能参考地址:https://www.cnblogs.com/xiuber/p/5945597.html2.本功能必须先引入jquery和jquery-ui（注意引入先后顺序） 前端代码:1234567891011121314151617181920212223242526272829303132333435363738394">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-11T02:48:45.593Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="night-bright">
-<meta name="twitter:description" content="night-bright的个人博客">
-  <link rel="canonical" href="http://night-bright.com/">
+<meta name="twitter:title" content="Yii2的GridView实现拖动排序功能">
+<meta name="twitter:description" content="本功能同样适用于其他的框架或者原生的程序（需要根据实际情况做修改）1.本功能参考地址:https://www.cnblogs.com/xiuber/p/5945597.html2.本功能必须先引入jquery和jquery-ui（注意引入先后顺序） 前端代码:1234567891011121314151617181920212223242526272829303132333435363738394">
+  <link rel="canonical" href="http://night-bright.com/2019/09/29/Yii2的GridView实现拖动排序功能/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
+    isHome: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>night-bright</title>
+  <title>Yii2的GridView实现拖动排序功能 | night-bright</title>
   
 
 
@@ -419,290 +420,13 @@
 
           <div id="content" class="content">
             
+
   <div id="posts" class="posts-expand">
-        <article itemscope itemtype="http://schema.org/Article">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://night-bright.com/2019/10/11/案例-用一条语句查询出日志表login-log中所有在a日登录过并在b日没有登录过的用户/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="night-bright">
-      <meta itemprop="description" content="night-bright的个人博客">
-      <meta itemprop="image" content="/images/touxiang1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="night-bright">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/10/11/案例-用一条语句查询出日志表login-log中所有在a日登录过并在b日没有登录过的用户/" class="post-title-link" itemprop="url">案例:用一条语句查询出日志表login_log中所有在a日登录过并在b日没有登录过的用户</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-10-11 11:35:41 / 修改时间：11:39:29" itemprop="dateCreated datePublished" datetime="2019-10-11T11:35:41+08:00">2019-10-11</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h6 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h6><p>将题目拆分成两部分<br>1先查出所有在a日登录过的用户名<br>2用1的结果加上b日的时间为条件完成最终查询</p>
-<h6 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h6><p>假设:<br>日志表为:login_log<br>用户名为:username<br>登录时间字段为:time<br>时间a为:time_a<br>时间b为:time_b<br>1的代码</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> username <span class="keyword">from</span> login_log <span class="keyword">where</span> <span class="built_in">time</span> = <span class="string">'time_a'</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> username;</span><br></pre></td></tr></table></figure>
-
-<p>2最终代码</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> username <span class="keyword">FROM</span> login_log <span class="keyword">WHERE</span> username <span class="keyword">IN</span> (<span class="keyword">SELECT</span> username <span class="keyword">from</span> login_log <span class="keyword">where</span> <span class="built_in">time</span> = <span class="string">'time_a'</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> username) <span class="keyword">AND</span> <span class="built_in">time</span> &lt;&gt; <span class="string">'time_b'</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> username;</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://night-bright.com/2019/10/11/数据库的优化整理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="night-bright">
-      <meta itemprop="description" content="night-bright的个人博客">
-      <meta itemprop="image" content="/images/touxiang1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="night-bright">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/10/11/数据库的优化整理/" class="post-title-link" itemprop="url">数据库的优化整理</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-10-11 11:31:49 / 修改时间：11:34:59" itemprop="dateCreated datePublished" datetime="2019-10-11T11:31:49+08:00">2019-10-11</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ol>
-<li>选择有效率的表名顺序</li>
-<li>where子句的字段顺序(个人理解:如查询用户表的20岁男性数据,条件应该先写年龄再写性别,因为通常情况下指定年龄的数据更少可以先过滤掉大多数无用数据从而提高查询的效率)</li>
-<li>查询语句中避免使用’*‘,最好需要什么就查询什么字段</li>
-<li>用where子句替换having子句</li>
-<li>避免在索引列上使用计算</li>
-<li>提高group by的语句效率(提前用条件过滤掉不需要的数据)</li>
-<li>尽量避免将字段的默认值设置为null</li>
-<li>关联查询替代子查询</li>
-<li>尽量少使用like关键字和通配符</li>
-<li>使用事物和外键</li>
-<li>建立索引</li>
-<li>使用适合的字段属性(尽可能的使用int或varchar类型并设置合理的长度)(一些状态位要用int类型标识并且大多都不适宜建立索引)</li>
-<li>读写分离主从复制(建立主数据库和若干个从数据库,当进行数据库操作时判断操作是读取或者其他操作,如果是读则在从数据库中查询数据,如果是其他操作则在主数据库中进行,然后通过异步的主从复制将数据同步到从数据库)</li>
-</ol>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://night-bright.com/2019/10/11/MySQL数据去重/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="night-bright">
-      <meta itemprop="description" content="night-bright的个人博客">
-      <meta itemprop="image" content="/images/touxiang1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="night-bright">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/10/11/MySQL数据去重/" class="post-title-link" itemprop="url">MySQL数据去重</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-10-11 11:28:55 / 修改时间：11:30:38" itemprop="dateCreated datePublished" datetime="2019-10-11T11:28:55+08:00">2019-10-11</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h6 id="删除掉某表重名用户"><a href="#删除掉某表重名用户" class="headerlink" title="删除掉某表重名用户"></a>删除掉某表重名用户</h6><p>表名: user<br>字段:<br>主键: id<br>用户名: name</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete <span class="keyword">from</span><span class="built_in"> user </span>where id <span class="keyword">not</span> <span class="keyword">in</span>(SELECT max(id) <span class="keyword">from</span><span class="built_in"> user group </span>by name);</span><br></pre></td></tr></table></figure>
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
+  <div class="post-block post">
     <link itemprop="mainEntityOfPage" href="http://night-bright.com/2019/09/29/Yii2的GridView实现拖动排序功能/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -715,9 +439,8 @@
       <meta itemprop="name" content="night-bright">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/29/Yii2的GridView实现拖动排序功能/" class="post-title-link" itemprop="url">Yii2的GridView实现拖动排序功能</a>
+        <h1 class="post-title" itemprop="name headline">Yii2的GridView实现拖动排序功能
+
           
         </h1>
 
@@ -762,6 +485,14 @@
           
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+          
 
         </div>
       </header>
@@ -772,128 +503,82 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h6 id="本功能同样适用于其他的框架或者原生的程序（需要根据实际情况做修改）"><a href="#本功能同样适用于其他的框架或者原生的程序（需要根据实际情况做修改）" class="headerlink" title="本功能同样适用于其他的框架或者原生的程序（需要根据实际情况做修改）"></a>本功能同样适用于其他的框架或者原生的程序（需要根据实际情况做修改）</h6><p>1.本功能参考地址:<a href="https://www.cnblogs.com/xiuber/p/5945597.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiuber/p/5945597.html</a><br>2.本功能必须先引入jquery和jquery-ui（注意引入先后顺序）</p>
+        <h6 id="本功能同样适用于其他的框架或者原生的程序（需要根据实际情况做修改）"><a href="#本功能同样适用于其他的框架或者原生的程序（需要根据实际情况做修改）" class="headerlink" title="本功能同样适用于其他的框架或者原生的程序（需要根据实际情况做修改）"></a>本功能同样适用于其他的框架或者原生的程序（需要根据实际情况做修改）</h6><p>1.本功能参考地址:<a href="https://www.cnblogs.com/xiuber/p/5945597.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiuber/p/5945597.html</a><br>2.本功能必须先引入jquery和jquery-ui（注意引入先后顺序）</p>
 <h6 id="前端代码"><a href="#前端代码" class="headerlink" title="前端代码:"></a>前端代码:</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?</span>= GridView::widget([</span></span><br><span class="line"><span class="php">    <span class="string">'dataProvider'</span> =&gt; $dataProvider,</span></span><br><span class="line"><span class="php">    <span class="string">'columns'</span> =&gt; [</span></span><br><span class="line"><span class="php">        [<span class="string">'class'</span> =&gt; <span class="string">'yii\grid\SerialColumn'</span>],</span></span><br><span class="line"><span class="php">        <span class="string">'uuid'</span>,</span></span><br><span class="line"><span class="php">        [</span></span><br><span class="line"><span class="php">            <span class="comment">// 添加一个隐藏的uuid为要修改数据的主键方便获取(其实这个并没有用到只是以防万一的备选方案)</span></span></span><br><span class="line"><span class="php">            <span class="string">'attribute'</span> =&gt; <span class="string">'uuid'</span>,</span></span><br><span class="line"><span class="php">            <span class="string">'contentOptions'</span> =&gt; [</span></span><br><span class="line"><span class="php">                <span class="string">'class'</span> =&gt; <span class="string">'uuid'</span>,</span></span><br><span class="line"><span class="php">            ],</span></span><br><span class="line"><span class="php">            <span class="string">'headerOptions'</span> =&gt; [<span class="string">'style'</span>=&gt;<span class="string">'display:none'</span>],</span></span><br><span class="line"><span class="php">            <span class="string">'contentOptions'</span> =&gt; [<span class="string">'style'</span>=&gt;<span class="string">'display:none'</span>],</span></span><br><span class="line"><span class="php">        ],</span></span><br><span class="line"><span class="php">        <span class="string">'name'</span>,</span></span><br><span class="line"><span class="php">        [</span></span><br><span class="line"><span class="php">            <span class="string">'attribute'</span> =&gt; <span class="string">'order_num'</span>,<span class="comment">//这里是排序的字段</span></span></span><br><span class="line"><span class="php">            <span class="string">'contentOptions'</span> =&gt; [</span></span><br><span class="line"><span class="php">                <span class="string">'class'</span> =&gt; <span class="string">'index'</span>,<span class="comment">//向td中插入class方便后续修改排序的显示</span></span></span><br><span class="line"><span class="php">            ],</span></span><br><span class="line"><span class="php">        ],</span></span><br><span class="line"><span class="php">    ],</span></span><br><span class="line"><span class="php">]); <span class="meta">?&gt;</span></span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> old_array = <span class="keyword">new</span> <span class="built_in">Array</span>();</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> paixu_array = <span class="keyword">new</span> <span class="built_in">Array</span>();</span></span><br><span class="line"><span class="javascript">    $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> fixHelperModified = <span class="function"><span class="keyword">function</span><span class="params">(e, tr)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">var</span> $originals = tr.children();</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">var</span> $helper = tr.clone();</span></span><br><span class="line"><span class="actionscript">            $helper.children().each(<span class="function"><span class="keyword">function</span><span class="params">(index)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">                <span class="comment">//获取宽度</span></span></span><br><span class="line"><span class="javascript">                $(<span class="keyword">this</span>).width($originals.eq(index).width())</span></span><br><span class="line">            &#125;);</span><br><span class="line"><span class="actionscript">            <span class="keyword">return</span> $helper;</span></span><br><span class="line">        &#125;,</span><br><span class="line"><span class="actionscript">        updateIndex = <span class="function"><span class="keyword">function</span><span class="params">(e, ui)</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">            $(<span class="string">'td.index'</span>, ui.item.parent()).each(<span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span></span><br><span class="line"><span class="actionscript">                <span class="comment">//console.log($(this).parent().attr('data-key'));</span></span></span><br><span class="line"><span class="actionscript">                <span class="comment">// 获取数据的主键data-key这个属性为GridView自动生成的 如果使用备选方案可以这么写console.log($(this).parent().find('td').eq(2).html());</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> uuid = $(<span class="keyword">this</span>).parent().attr(<span class="string">'data-key'</span>);</span></span><br><span class="line"><span class="actionscript">                <span class="comment">// 将排序的顺序和主键存入数组</span></span></span><br><span class="line">                paixu_array[i + 1] = uuid;</span><br><span class="line"><span class="actionscript">                <span class="comment">// 修改表格的排序显示</span></span></span><br><span class="line"><span class="javascript">                $(<span class="keyword">this</span>).html(i + <span class="number">1</span>);</span></span><br><span class="line"><span class="actionscript">                <span class="comment">// 调用方法将数据传入控制器</span></span></span><br><span class="line">                save_paixu();</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;;</span><br><span class="line"><span class="actionscript">        <span class="comment">// #paixu_div是包裹表格的一层div这里没有写</span></span></span><br><span class="line"><span class="javascript">        $(<span class="string">"#paixu_div tbody"</span>).sortable(&#123;</span></span><br><span class="line">            helper: fixHelperModified,</span><br><span class="line"><span class="vbscript">            <span class="keyword">stop</span>: updateIndex</span></span><br><span class="line">        &#125;).disableSelection();</span><br><span class="line">    &#125;);</span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">save_paixu</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 获取有多少条数据</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> tr_num = $(<span class="string">".ui-sortable tr"</span>).length;</span></span><br><span class="line">        tr_num = tr_num+1;</span><br><span class="line"><span class="actionscript">        <span class="keyword">if</span> (paixu_array.length != tr_num)&#123;</span></span><br><span class="line"><span class="actionscript">            <span class="comment">// 数组的长度要等于数据的长度+1(原因自己看数据的打印结果)</span></span></span><br><span class="line"><span class="actionscript">            <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line"><span class="actionscript">        &#125;<span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">if</span> (paixu_array.toString() == old_array.toString())&#123;</span></span><br><span class="line"><span class="actionscript">                <span class="comment">// 比较旧的排序于新的排序有没有改变</span></span></span><br><span class="line"><span class="actionscript">                <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="actionscript">        <span class="comment">// 这个判断没有用忘记删了</span></span></span><br><span class="line"><span class="actionscript">        <span class="keyword">if</span>(<span class="number">1</span>) &#123;</span></span><br><span class="line">            new__array = paixu_array;</span><br><span class="line">            paixu_array = [];</span><br><span class="line"><span class="javascript">            $.ajax(&#123;</span></span><br><span class="line"><span class="actionscript">                url: <span class="string">"ajax地址"</span>,</span></span><br><span class="line"><span class="actionscript">                data: &#123;<span class="string">"paixu_array"</span>: new__array&#125;,</span></span><br><span class="line"><span class="actionscript">                type: <span class="string">"post"</span>,</span></span><br><span class="line"><span class="actionscript">                success: <span class="function"><span class="keyword">function</span> <span class="params">(backdata)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="comment">//console.log(backdata);</span></span></span><br><span class="line"><span class="actionscript">                    <span class="keyword">var</span> res = jQuery.parseJSON(backdata);</span></span><br><span class="line"><span class="actionscript">                    <span class="keyword">if</span>(res.success) &#123;</span></span><br><span class="line"><span class="actionscript">                        <span class="comment">//alert(res.message);</span></span></span><br><span class="line">                        old_array = paixu_array;</span><br><span class="line">                        paixu_array = [];</span><br><span class="line"><span class="actionscript">                    &#125;<span class="keyword">else</span> &#123;</span></span><br><span class="line">                        alert(res.message);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">                &#125;, error: <span class="function"><span class="keyword">function</span> <span class="params">(error)</span> </span>&#123;</span></span><br><span class="line"><span class="vbscript">                    console.<span class="built_in">log</span>(<span class="keyword">error</span>);</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h6 id="控制器代码"><a href="#控制器代码" class="headerlink" title="控制器代码:"></a>控制器代码:</h6><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">findModel</span><span class="params">($id)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (($model = ModelName::findOne($id)) !== <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> $model;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NotFoundHttpException(<span class="string">'The requested page does not exist.'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">actionSavePaixu</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(Yii::$app-&gt;request-&gt;isAjax &amp;&amp; <span class="keyword">isset</span>($_POST[<span class="string">'paixu_array'</span>])) &#123;</span><br><span class="line">        $paixu_array = $_POST[<span class="string">'paixu_array'</span>];</span><br><span class="line">        <span class="comment">//事物</span></span><br><span class="line">        $transation = Yii::$app-&gt;db-&gt;beginTransaction();</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="keyword">foreach</span>($paixu_array <span class="keyword">as</span> $k =&gt; $v)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> ($k)&#123;</span><br><span class="line">                    $model = <span class="keyword">$this</span>-&gt;findModel($v);</span><br><span class="line">                    $model-&gt;order_num = $k;</span><br><span class="line">                    $model-&gt;save();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 执行事务</span></span><br><span class="line">            $transation-&gt;commit();</span><br><span class="line">            <span class="keyword">echo</span> json_encode(<span class="keyword">array</span>(<span class="string">'success'</span>=&gt;<span class="keyword">true</span>,<span class="string">'message'</span>=&gt;<span class="string">'修改成功'</span>));</span><br><span class="line">        &#125;<span class="keyword">catch</span>(\<span class="keyword">Exception</span> $e)&#123;</span><br><span class="line">            <span class="comment">// 回滚</span></span><br><span class="line">            $transation-&gt;rollBack();</span><br><span class="line">            <span class="comment">// 记录错误</span></span><br><span class="line">            <span class="keyword">echo</span> json_encode(<span class="keyword">array</span>(<span class="string">'success'</span>=&gt;<span class="keyword">FALSE</span>,<span class="string">'message'</span>=&gt;<span class="string">'修改失败'</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h6 id="以上代码仅供参考要注重理解含义举一反三，完全复制粘贴是不可能实现的"><a href="#以上代码仅供参考要注重理解含义举一反三，完全复制粘贴是不可能实现的" class="headerlink" title="以上代码仅供参考要注重理解含义举一反三，完全复制粘贴是不可能实现的"></a>以上代码仅供参考要注重理解含义举一反三，完全复制粘贴是不可能实现的</h6>
-        
-      
     </div>
 
     
     
     
+        
+      
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>night-bright</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://night-bright.com/2019/09/29/Yii2的GridView实现拖动排序功能/" title="Yii2的GridView实现拖动排序功能">http://night-bright.com/2019/09/29/Yii2的GridView实现拖动排序功能/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+</div>
+
+      
+
       <footer class="post-footer">
-          <div class="post-eof"></div>
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/PHP/" rel="tag"># PHP</a>
+            
+              <a href="/tags/Yii2/" rel="tag"># Yii2</a>
+            
+              <a href="/tags/拖动排序/" rel="tag"># 拖动排序</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/09/29/php格式化文本换行缩进/" rel="next" title="php格式化文本换行缩进">
+                  <i class="fa fa-chevron-left"></i> php格式化文本换行缩进
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/10/11/MySQL数据去重/" rel="prev" title="MySQL数据去重">
+                  MySQL数据去重 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
         
       </footer>
+    
   </div>
   
   
   
   </article>
 
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://night-bright.com/2019/09/29/php格式化文本换行缩进/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="night-bright">
-      <meta itemprop="description" content="night-bright的个人博客">
-      <meta itemprop="image" content="/images/touxiang1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="night-bright">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/29/php格式化文本换行缩进/" class="post-title-link" itemprop="url">php格式化文本换行缩进</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-29 11:23:53" itemprop="dateCreated datePublished" datetime="2019-09-29T11:23:53+08:00">2019-09-29</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-11 11:26:49" itemprop="dateModified" datetime="2019-10-11T11:26:49+08:00">2019-10-11</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h6 id="曾经针对文本的换行添加样式的简单方法-记一下笔记"><a href="#曾经针对文本的换行添加样式的简单方法-记一下笔记" class="headerlink" title="曾经针对文本的换行添加样式的简单方法,记一下笔记"></a>曾经针对文本的换行添加样式的简单方法,记一下笔记</h6><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">add_html_p</span><span class="params">($text)</span></span>&#123;</span><br><span class="line">    $keyword_arr = explode(<span class="string">"\n"</span>, $text);</span><br><span class="line">    $new_text = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">foreach</span> ($keyword_arr <span class="keyword">as</span> $k =&gt; $v)&#123;</span><br><span class="line">        $new_text .= <span class="string">'&lt;p style="text-indent:2em;margin: 0px;line-height:1.7"&gt;'</span>.$v.<span class="string">'&lt;/p&gt;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $new_text;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
   </div>
-  
-  
-  
-  </article>
-
-    
-  </div>
-
-  
 
 
           </div>
@@ -912,6 +597,11 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -924,6 +614,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#本功能同样适用于其他的框架或者原生的程序（需要根据实际情况做修改）"><span class="nav-number">1.</span> <span class="nav-text">本功能同样适用于其他的框架或者原生的程序（需要根据实际情况做修改）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#前端代码"><span class="nav-number">2.</span> <span class="nav-text">前端代码:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#控制器代码"><span class="nav-number">3.</span> <span class="nav-text">控制器代码:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#以上代码仅供参考要注重理解含义举一反三，完全复制粘贴是不可能实现的"><span class="nav-number">4.</span> <span class="nav-text">以上代码仅供参考要注重理解含义举一反三，完全复制粘贴是不可能实现的</span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
 

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://night-bright.com/"/>
-  <updated>2019-09-17T06:57:58.728Z</updated>
+  <updated>2019-10-11T03:39:29.161Z</updated>
   <id>http://night-bright.com/</id>
   
   <author>
@@ -17,39 +17,146 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>测试文章</title>
-    <link href="http://night-bright.com/2019/09/17/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
-    <id>http://night-bright.com/2019/09/17/测试文章/</id>
-    <published>2019-09-17T06:57:58.000Z</published>
-    <updated>2019-09-17T06:57:58.728Z</updated>
+    <title>案例:用一条语句查询出日志表login_log中所有在a日登录过并在b日没有登录过的用户</title>
+    <link href="http://night-bright.com/2019/10/11/%E6%A1%88%E4%BE%8B-%E7%94%A8%E4%B8%80%E6%9D%A1%E8%AF%AD%E5%8F%A5%E6%9F%A5%E8%AF%A2%E5%87%BA%E6%97%A5%E5%BF%97%E8%A1%A8login-log%E4%B8%AD%E6%89%80%E6%9C%89%E5%9C%A8a%E6%97%A5%E7%99%BB%E5%BD%95%E8%BF%87%E5%B9%B6%E5%9C%A8b%E6%97%A5%E6%B2%A1%E6%9C%89%E7%99%BB%E5%BD%95%E8%BF%87%E7%9A%84%E7%94%A8%E6%88%B7/"/>
+    <id>http://night-bright.com/2019/10/11/案例-用一条语句查询出日志表login-log中所有在a日登录过并在b日没有登录过的用户/</id>
+    <published>2019-10-11T03:35:41.000Z</published>
+    <updated>2019-10-11T03:39:29.161Z</updated>
+    
+    <content type="html"><![CDATA[<h6 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h6><p>将题目拆分成两部分<br>1先查出所有在a日登录过的用户名<br>2用1的结果加上b日的时间为条件完成最终查询</p><h6 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h6><p>假设:<br>日志表为:login_log<br>用户名为:username<br>登录时间字段为:time<br>时间a为:time_a<br>时间b为:time_b<br>1的代码</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> username <span class="keyword">from</span> login_log <span class="keyword">where</span> <span class="built_in">time</span> = <span class="string">'time_a'</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> username;</span><br></pre></td></tr></table></figure><p>2最终代码</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> username <span class="keyword">FROM</span> login_log <span class="keyword">WHERE</span> username <span class="keyword">IN</span> (<span class="keyword">SELECT</span> username <span class="keyword">from</span> login_log <span class="keyword">where</span> <span class="built_in">time</span> = <span class="string">'time_a'</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> username) <span class="keyword">AND</span> <span class="built_in">time</span> &lt;&gt; <span class="string">'time_b'</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> username;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;h6 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路:&quot;&gt;&lt;/a&gt;思路:&lt;/h6&gt;&lt;p&gt;将题目拆分成两部分&lt;br&gt;1先查出所有在a日登录过的用户名&lt;br&gt;2用1的结果加上b日的时间为条件完成最终查询&lt;/p&gt;
+&lt;h6 id=&quot;
+      
     
     </summary>
     
     
+      <category term="MySQL" scheme="http://night-bright.com/categories/MySQL/"/>
+    
+    
+      <category term="MySQL" scheme="http://night-bright.com/tags/MySQL/"/>
+    
+      <category term="面试题" scheme="http://night-bright.com/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://night-bright.com/2019/09/17/hello-world/"/>
-    <id>http://night-bright.com/2019/09/17/hello-world/</id>
-    <published>2019-09-17T01:33:53.313Z</published>
-    <updated>2019-09-17T01:33:53.314Z</updated>
+    <title>数据库的优化整理</title>
+    <link href="http://night-bright.com/2019/10/11/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BC%98%E5%8C%96%E6%95%B4%E7%90%86/"/>
+    <id>http://night-bright.com/2019/10/11/数据库的优化整理/</id>
+    <published>2019-10-11T03:31:49.000Z</published>
+    <updated>2019-10-11T03:34:59.981Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<ol><li>选择有效率的表名顺序</li><li>where子句的字段顺序(个人理解:如查询用户表的20岁男性数据,条件应该先写年龄再写性别,因为通常情况下指定年龄的数据更少可以先过滤掉大多数无用数据从而提高查询的效率)</li><li>查询语句中避免使用’*‘,最好需要什么就查询什么字段</li><li>用where子句替换having子句</li><li>避免在索引列上使用计算</li><li>提高group by的语句效率(提前用条件过滤掉不需要的数据)</li><li>尽量避免将字段的默认值设置为null</li><li>关联查询替代子查询</li><li>尽量少使用like关键字和通配符</li><li>使用事物和外键</li><li>建立索引</li><li>使用适合的字段属性(尽可能的使用int或varchar类型并设置合理的长度)(一些状态位要用int类型标识并且大多都不适宜建立索引)</li><li>读写分离主从复制(建立主数据库和若干个从数据库,当进行数据库操作时判断操作是读取或者其他操作,如果是读则在从数据库中查询数据,如果是其他操作则在主数据库中进行,然后通过异步的主从复制将数据同步到从数据库)</li></ol>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+        &lt;ol&gt;
+&lt;li&gt;选择有效率的表名顺序&lt;/li&gt;
+&lt;li&gt;where子句的字段顺序(个人理解:如查询用户表的20岁男性数据,条件应该先写年龄再写性别,因为通常情况下指定年龄的数据更少可以先过滤掉大多数无用数据从而提高查询的效率)&lt;/li&gt;
+&lt;li&gt;查询语句中避免使用’*‘,最好需
       
     
     </summary>
     
     
+      <category term="MySQL" scheme="http://night-bright.com/categories/MySQL/"/>
+    
+    
+      <category term="MySQL" scheme="http://night-bright.com/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL数据去重</title>
+    <link href="http://night-bright.com/2019/10/11/MySQL%E6%95%B0%E6%8D%AE%E5%8E%BB%E9%87%8D/"/>
+    <id>http://night-bright.com/2019/10/11/MySQL数据去重/</id>
+    <published>2019-10-11T03:28:55.000Z</published>
+    <updated>2019-10-11T03:30:38.784Z</updated>
+    
+    <content type="html"><![CDATA[<h6 id="删除掉某表重名用户"><a href="#删除掉某表重名用户" class="headerlink" title="删除掉某表重名用户"></a>删除掉某表重名用户</h6><p>表名: user<br>字段:<br>主键: id<br>用户名: name</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete <span class="keyword">from</span><span class="built_in"> user </span>where id <span class="keyword">not</span> <span class="keyword">in</span>(SELECT max(id) <span class="keyword">from</span><span class="built_in"> user group </span>by name);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h6 id=&quot;删除掉某表重名用户&quot;&gt;&lt;a href=&quot;#删除掉某表重名用户&quot; class=&quot;headerlink&quot; title=&quot;删除掉某表重名用户&quot;&gt;&lt;/a&gt;删除掉某表重名用户&lt;/h6&gt;&lt;p&gt;表名: user&lt;br&gt;字段:&lt;br&gt;主键: id&lt;br&gt;用户名: name&lt;/p&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="MySQL" scheme="http://night-bright.com/categories/MySQL/"/>
+    
+    
+      <category term="MySQL" scheme="http://night-bright.com/tags/MySQL/"/>
+    
+      <category term="数据去重" scheme="http://night-bright.com/tags/%E6%95%B0%E6%8D%AE%E5%8E%BB%E9%87%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Yii2的GridView实现拖动排序功能</title>
+    <link href="http://night-bright.com/2019/09/29/Yii2%E7%9A%84GridView%E5%AE%9E%E7%8E%B0%E6%8B%96%E5%8A%A8%E6%8E%92%E5%BA%8F%E5%8A%9F%E8%83%BD/"/>
+    <id>http://night-bright.com/2019/09/29/Yii2的GridView实现拖动排序功能/</id>
+    <published>2019-09-29T12:54:00.000Z</published>
+    <updated>2019-10-11T02:48:45.593Z</updated>
+    
+    <content type="html"><![CDATA[<h6 id="本功能同样适用于其他的框架或者原生的程序（需要根据实际情况做修改）"><a href="#本功能同样适用于其他的框架或者原生的程序（需要根据实际情况做修改）" class="headerlink" title="本功能同样适用于其他的框架或者原生的程序（需要根据实际情况做修改）"></a>本功能同样适用于其他的框架或者原生的程序（需要根据实际情况做修改）</h6><p>1.本功能参考地址:<a href="https://www.cnblogs.com/xiuber/p/5945597.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiuber/p/5945597.html</a><br>2.本功能必须先引入jquery和jquery-ui（注意引入先后顺序）</p><h6 id="前端代码"><a href="#前端代码" class="headerlink" title="前端代码:"></a>前端代码:</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?</span>= GridView::widget([</span></span><br><span class="line"><span class="php">    <span class="string">'dataProvider'</span> =&gt; $dataProvider,</span></span><br><span class="line"><span class="php">    <span class="string">'columns'</span> =&gt; [</span></span><br><span class="line"><span class="php">        [<span class="string">'class'</span> =&gt; <span class="string">'yii\grid\SerialColumn'</span>],</span></span><br><span class="line"><span class="php">        <span class="string">'uuid'</span>,</span></span><br><span class="line"><span class="php">        [</span></span><br><span class="line"><span class="php">            <span class="comment">// 添加一个隐藏的uuid为要修改数据的主键方便获取(其实这个并没有用到只是以防万一的备选方案)</span></span></span><br><span class="line"><span class="php">            <span class="string">'attribute'</span> =&gt; <span class="string">'uuid'</span>,</span></span><br><span class="line"><span class="php">            <span class="string">'contentOptions'</span> =&gt; [</span></span><br><span class="line"><span class="php">                <span class="string">'class'</span> =&gt; <span class="string">'uuid'</span>,</span></span><br><span class="line"><span class="php">            ],</span></span><br><span class="line"><span class="php">            <span class="string">'headerOptions'</span> =&gt; [<span class="string">'style'</span>=&gt;<span class="string">'display:none'</span>],</span></span><br><span class="line"><span class="php">            <span class="string">'contentOptions'</span> =&gt; [<span class="string">'style'</span>=&gt;<span class="string">'display:none'</span>],</span></span><br><span class="line"><span class="php">        ],</span></span><br><span class="line"><span class="php">        <span class="string">'name'</span>,</span></span><br><span class="line"><span class="php">        [</span></span><br><span class="line"><span class="php">            <span class="string">'attribute'</span> =&gt; <span class="string">'order_num'</span>,<span class="comment">//这里是排序的字段</span></span></span><br><span class="line"><span class="php">            <span class="string">'contentOptions'</span> =&gt; [</span></span><br><span class="line"><span class="php">                <span class="string">'class'</span> =&gt; <span class="string">'index'</span>,<span class="comment">//向td中插入class方便后续修改排序的显示</span></span></span><br><span class="line"><span class="php">            ],</span></span><br><span class="line"><span class="php">        ],</span></span><br><span class="line"><span class="php">    ],</span></span><br><span class="line"><span class="php">]); <span class="meta">?&gt;</span></span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> old_array = <span class="keyword">new</span> <span class="built_in">Array</span>();</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> paixu_array = <span class="keyword">new</span> <span class="built_in">Array</span>();</span></span><br><span class="line"><span class="javascript">    $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> fixHelperModified = <span class="function"><span class="keyword">function</span><span class="params">(e, tr)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">var</span> $originals = tr.children();</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">var</span> $helper = tr.clone();</span></span><br><span class="line"><span class="actionscript">            $helper.children().each(<span class="function"><span class="keyword">function</span><span class="params">(index)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">                <span class="comment">//获取宽度</span></span></span><br><span class="line"><span class="javascript">                $(<span class="keyword">this</span>).width($originals.eq(index).width())</span></span><br><span class="line">            &#125;);</span><br><span class="line"><span class="actionscript">            <span class="keyword">return</span> $helper;</span></span><br><span class="line">        &#125;,</span><br><span class="line"><span class="actionscript">        updateIndex = <span class="function"><span class="keyword">function</span><span class="params">(e, ui)</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">            $(<span class="string">'td.index'</span>, ui.item.parent()).each(<span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span></span><br><span class="line"><span class="actionscript">                <span class="comment">//console.log($(this).parent().attr('data-key'));</span></span></span><br><span class="line"><span class="actionscript">                <span class="comment">// 获取数据的主键data-key这个属性为GridView自动生成的 如果使用备选方案可以这么写console.log($(this).parent().find('td').eq(2).html());</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> uuid = $(<span class="keyword">this</span>).parent().attr(<span class="string">'data-key'</span>);</span></span><br><span class="line"><span class="actionscript">                <span class="comment">// 将排序的顺序和主键存入数组</span></span></span><br><span class="line">                paixu_array[i + 1] = uuid;</span><br><span class="line"><span class="actionscript">                <span class="comment">// 修改表格的排序显示</span></span></span><br><span class="line"><span class="javascript">                $(<span class="keyword">this</span>).html(i + <span class="number">1</span>);</span></span><br><span class="line"><span class="actionscript">                <span class="comment">// 调用方法将数据传入控制器</span></span></span><br><span class="line">                save_paixu();</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;;</span><br><span class="line"><span class="actionscript">        <span class="comment">// #paixu_div是包裹表格的一层div这里没有写</span></span></span><br><span class="line"><span class="javascript">        $(<span class="string">"#paixu_div tbody"</span>).sortable(&#123;</span></span><br><span class="line">            helper: fixHelperModified,</span><br><span class="line"><span class="vbscript">            <span class="keyword">stop</span>: updateIndex</span></span><br><span class="line">        &#125;).disableSelection();</span><br><span class="line">    &#125;);</span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">save_paixu</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 获取有多少条数据</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> tr_num = $(<span class="string">".ui-sortable tr"</span>).length;</span></span><br><span class="line">        tr_num = tr_num+1;</span><br><span class="line"><span class="actionscript">        <span class="keyword">if</span> (paixu_array.length != tr_num)&#123;</span></span><br><span class="line"><span class="actionscript">            <span class="comment">// 数组的长度要等于数据的长度+1(原因自己看数据的打印结果)</span></span></span><br><span class="line"><span class="actionscript">            <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line"><span class="actionscript">        &#125;<span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">if</span> (paixu_array.toString() == old_array.toString())&#123;</span></span><br><span class="line"><span class="actionscript">                <span class="comment">// 比较旧的排序于新的排序有没有改变</span></span></span><br><span class="line"><span class="actionscript">                <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="actionscript">        <span class="comment">// 这个判断没有用忘记删了</span></span></span><br><span class="line"><span class="actionscript">        <span class="keyword">if</span>(<span class="number">1</span>) &#123;</span></span><br><span class="line">            new__array = paixu_array;</span><br><span class="line">            paixu_array = [];</span><br><span class="line"><span class="javascript">            $.ajax(&#123;</span></span><br><span class="line"><span class="actionscript">                url: <span class="string">"ajax地址"</span>,</span></span><br><span class="line"><span class="actionscript">                data: &#123;<span class="string">"paixu_array"</span>: new__array&#125;,</span></span><br><span class="line"><span class="actionscript">                type: <span class="string">"post"</span>,</span></span><br><span class="line"><span class="actionscript">                success: <span class="function"><span class="keyword">function</span> <span class="params">(backdata)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="comment">//console.log(backdata);</span></span></span><br><span class="line"><span class="actionscript">                    <span class="keyword">var</span> res = jQuery.parseJSON(backdata);</span></span><br><span class="line"><span class="actionscript">                    <span class="keyword">if</span>(res.success) &#123;</span></span><br><span class="line"><span class="actionscript">                        <span class="comment">//alert(res.message);</span></span></span><br><span class="line">                        old_array = paixu_array;</span><br><span class="line">                        paixu_array = [];</span><br><span class="line"><span class="actionscript">                    &#125;<span class="keyword">else</span> &#123;</span></span><br><span class="line">                        alert(res.message);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">                &#125;, error: <span class="function"><span class="keyword">function</span> <span class="params">(error)</span> </span>&#123;</span></span><br><span class="line"><span class="vbscript">                    console.<span class="built_in">log</span>(<span class="keyword">error</span>);</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><h6 id="控制器代码"><a href="#控制器代码" class="headerlink" title="控制器代码:"></a>控制器代码:</h6><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">findModel</span><span class="params">($id)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (($model = ModelName::findOne($id)) !== <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> $model;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NotFoundHttpException(<span class="string">'The requested page does not exist.'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">actionSavePaixu</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(Yii::$app-&gt;request-&gt;isAjax &amp;&amp; <span class="keyword">isset</span>($_POST[<span class="string">'paixu_array'</span>])) &#123;</span><br><span class="line">        $paixu_array = $_POST[<span class="string">'paixu_array'</span>];</span><br><span class="line">        <span class="comment">//事物</span></span><br><span class="line">        $transation = Yii::$app-&gt;db-&gt;beginTransaction();</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="keyword">foreach</span>($paixu_array <span class="keyword">as</span> $k =&gt; $v)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> ($k)&#123;</span><br><span class="line">                    $model = <span class="keyword">$this</span>-&gt;findModel($v);</span><br><span class="line">                    $model-&gt;order_num = $k;</span><br><span class="line">                    $model-&gt;save();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 执行事务</span></span><br><span class="line">            $transation-&gt;commit();</span><br><span class="line">            <span class="keyword">echo</span> json_encode(<span class="keyword">array</span>(<span class="string">'success'</span>=&gt;<span class="keyword">true</span>,<span class="string">'message'</span>=&gt;<span class="string">'修改成功'</span>));</span><br><span class="line">        &#125;<span class="keyword">catch</span>(\<span class="keyword">Exception</span> $e)&#123;</span><br><span class="line">            <span class="comment">// 回滚</span></span><br><span class="line">            $transation-&gt;rollBack();</span><br><span class="line">            <span class="comment">// 记录错误</span></span><br><span class="line">            <span class="keyword">echo</span> json_encode(<span class="keyword">array</span>(<span class="string">'success'</span>=&gt;<span class="keyword">FALSE</span>,<span class="string">'message'</span>=&gt;<span class="string">'修改失败'</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h6 id="以上代码仅供参考要注重理解含义举一反三，完全复制粘贴是不可能实现的"><a href="#以上代码仅供参考要注重理解含义举一反三，完全复制粘贴是不可能实现的" class="headerlink" title="以上代码仅供参考要注重理解含义举一反三，完全复制粘贴是不可能实现的"></a>以上代码仅供参考要注重理解含义举一反三，完全复制粘贴是不可能实现的</h6>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h6 id=&quot;本功能同样适用于其他的框架或者原生的程序（需要根据实际情况做修改）&quot;&gt;&lt;a href=&quot;#本功能同样适用于其他的框架或者原生的程序（需要根据实际情况做修改）&quot; class=&quot;headerlink&quot; title=&quot;本功能同样适用于其他的框架或者原生的程序（需要根据实
+      
+    
+    </summary>
+    
+    
+      <category term="PHP" scheme="http://night-bright.com/categories/PHP/"/>
+    
+    
+      <category term="PHP" scheme="http://night-bright.com/tags/PHP/"/>
+    
+      <category term="Yii2" scheme="http://night-bright.com/tags/Yii2/"/>
+    
+      <category term="拖动排序" scheme="http://night-bright.com/tags/%E6%8B%96%E5%8A%A8%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>php格式化文本换行缩进</title>
+    <link href="http://night-bright.com/2019/09/29/php%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%96%87%E6%9C%AC%E6%8D%A2%E8%A1%8C%E7%BC%A9%E8%BF%9B/"/>
+    <id>http://night-bright.com/2019/09/29/php格式化文本换行缩进/</id>
+    <published>2019-09-29T03:23:53.000Z</published>
+    <updated>2019-10-11T03:26:49.459Z</updated>
+    
+    <content type="html"><![CDATA[<h6 id="曾经针对文本的换行添加样式的简单方法-记一下笔记"><a href="#曾经针对文本的换行添加样式的简单方法-记一下笔记" class="headerlink" title="曾经针对文本的换行添加样式的简单方法,记一下笔记"></a>曾经针对文本的换行添加样式的简单方法,记一下笔记</h6><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">add_html_p</span><span class="params">($text)</span></span>&#123;</span><br><span class="line">    $keyword_arr = explode(<span class="string">"\n"</span>, $text);</span><br><span class="line">    $new_text = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">foreach</span> ($keyword_arr <span class="keyword">as</span> $k =&gt; $v)&#123;</span><br><span class="line">        $new_text .= <span class="string">'&lt;p style="text-indent:2em;margin: 0px;line-height:1.7"&gt;'</span>.$v.<span class="string">'&lt;/p&gt;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $new_text;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h6 id=&quot;曾经针对文本的换行添加样式的简单方法-记一下笔记&quot;&gt;&lt;a href=&quot;#曾经针对文本的换行添加样式的简单方法-记一下笔记&quot; class=&quot;headerlink&quot; title=&quot;曾经针对文本的换行添加样式的简单方法,记一下笔记&quot;&gt;&lt;/a&gt;曾经针对文本的换行添加样式的
+      
+    
+    </summary>
+    
+    
+      <category term="PHP" scheme="http://night-bright.com/categories/PHP/"/>
+    
+    
+      <category term="PHP" scheme="http://night-bright.com/tags/PHP/"/>
+    
+      <category term="换行" scheme="http://night-bright.com/tags/%E6%8D%A2%E8%A1%8C/"/>
     
   </entry>
   

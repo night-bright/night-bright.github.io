@@ -56,18 +56,19 @@
   };
 </script>
 
-  <meta name="description" content="night-bright的个人博客">
-<meta name="keywords" content="博客,php,html,js,css">
-<meta property="og:type" content="website">
-<meta property="og:title" content="night-bright">
-<meta property="og:url" content="http://night-bright.com/archives/2019/09/index.html">
+  <meta name="description" content="选择有效率的表名顺序 where子句的字段顺序(个人理解:如查询用户表的20岁男性数据,条件应该先写年龄再写性别,因为通常情况下指定年龄的数据更少可以先过滤掉大多数无用数据从而提高查询的效率) 查询语句中避免使用’*‘,最好需要什么就查询什么字段 用where子句替换having子句 避免在索引列上使用计算 提高group by的语句效率(提前用条件过滤掉不需要的数据) 尽量避免将字段的默认值设">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库的优化整理">
+<meta property="og:url" content="http://night-bright.com/2019/10/11/数据库的优化整理/index.html">
 <meta property="og:site_name" content="night-bright">
-<meta property="og:description" content="night-bright的个人博客">
+<meta property="og:description" content="选择有效率的表名顺序 where子句的字段顺序(个人理解:如查询用户表的20岁男性数据,条件应该先写年龄再写性别,因为通常情况下指定年龄的数据更少可以先过滤掉大多数无用数据从而提高查询的效率) 查询语句中避免使用’*‘,最好需要什么就查询什么字段 用where子句替换having子句 避免在索引列上使用计算 提高group by的语句效率(提前用条件过滤掉不需要的数据) 尽量避免将字段的默认值设">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-11T03:34:59.981Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="night-bright">
-<meta name="twitter:description" content="night-bright的个人博客">
-  <link rel="canonical" href="http://night-bright.com/archives/2019/09/">
+<meta name="twitter:title" content="数据库的优化整理">
+<meta name="twitter:description" content="选择有效率的表名顺序 where子句的字段顺序(个人理解:如查询用户表的20岁男性数据,条件应该先写年龄再写性别,因为通常情况下指定年龄的数据更少可以先过滤掉大多数无用数据从而提高查询的效率) 查询语句中避免使用’*‘,最好需要什么就查询什么字段 用where子句替换having子句 避免在索引列上使用计算 提高group by的语句效率(提前用条件过滤掉不需要的数据) 尽量避免将字段的默认值设">
+  <link rel="canonical" href="http://night-bright.com/2019/10/11/数据库的优化整理/">
 
 
 <script id="page-configurations">
@@ -75,13 +76,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
-    isArchive: true
+    isArchive: false
   };
 </script>
 
-  <title>归档 | night-bright</title>
+  <title>数据库的优化整理 | night-bright</title>
   
 
 
@@ -417,119 +418,165 @@
         <div class="content-wrap">
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        
-        
-        
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://night-bright.com/2019/10/11/数据库的优化整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="night-bright">
+      <meta itemprop="description" content="night-bright的个人博客">
+      <meta itemprop="image" content="/images/touxiang1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="night-bright">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">数据库的优化整理
+
           
-        
-        <span class="collection-header">嗯..! 目前共计 5 篇日志。 继续努力。</span>
-      </div>
-      
+        </h1>
 
-      
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-  
-  
+              
+                
+              
 
-  
+              <time title="创建时间：2019-10-11 11:31:49 / 修改时间：11:34:59" itemprop="dateCreated datePublished" datetime="2019-10-11T11:31:49+08:00">2019-10-11</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+        </div>
+      </header>
+
     
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
-    </div>
-  
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/09/29/Yii2的GridView实现拖动排序功能/" itemprop="url">
-            <span itemprop="name">Yii2的GridView实现拖动排序功能</span>
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-29T20:54:00+08:00"
-              content="2019-09-29">
-          09-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/09/29/php格式化文本换行缩进/" itemprop="url">
-            <span itemprop="name">php格式化文本换行缩进</span>
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-29T11:23:53+08:00"
-              content="2019-09-29">
-          09-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+      
+        <ol>
+<li>选择有效率的表名顺序</li>
+<li>where子句的字段顺序(个人理解:如查询用户表的20岁男性数据,条件应该先写年龄再写性别,因为通常情况下指定年龄的数据更少可以先过滤掉大多数无用数据从而提高查询的效率)</li>
+<li>查询语句中避免使用’*‘,最好需要什么就查询什么字段</li>
+<li>用where子句替换having子句</li>
+<li>避免在索引列上使用计算</li>
+<li>提高group by的语句效率(提前用条件过滤掉不需要的数据)</li>
+<li>尽量避免将字段的默认值设置为null</li>
+<li>关联查询替代子查询</li>
+<li>尽量少使用like关键字和通配符</li>
+<li>使用事物和外键</li>
+<li>建立索引</li>
+<li>使用适合的字段属性(尽可能的使用int或varchar类型并设置合理的长度)(一些状态位要用int类型标识并且大多都不适宜建立索引)</li>
+<li>读写分离主从复制(建立主数据库和若干个从数据库,当进行数据库操作时判断操作是读取或者其他操作,如果是读则在从数据库中查询数据,如果是其他操作则在主数据库中进行,然后通过异步的主从复制将数据同步到从数据库)</li>
+</ol>
 
     </div>
+
+    
+    
+    
+        
+      
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>night-bright</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://night-bright.com/2019/10/11/数据库的优化整理/" title="数据库的优化整理">http://night-bright.com/2019/10/11/数据库的优化整理/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+</div>
+
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/10/11/MySQL数据去重/" rel="next" title="MySQL数据去重">
+                  <i class="fa fa-chevron-left"></i> MySQL数据去重
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/10/11/案例-用一条语句查询出日志表login-log中所有在a日登录过并在b日没有登录过的用户/" rel="prev" title="案例:用一条语句查询出日志表login_log中所有在a日登录过并在b日没有登录过的用户">
+                  案例:用一条语句查询出日志表login_log中所有在a日登录过并在b日没有登录过的用户 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
   </div>
   
   
   
+  </article>
 
-  
-
+  </div>
 
 
           </div>
@@ -548,6 +595,11 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
